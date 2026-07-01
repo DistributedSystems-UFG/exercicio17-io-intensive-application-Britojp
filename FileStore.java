@@ -1,5 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.RandomAccessFile;
 
 public class FileStore {
 
@@ -11,7 +12,7 @@ public class FileStore {
         this.filePath = filePath;
     }
     public String readRecord(int id) throws IOException {
-        try (RandomAccessFile raf = new RandomAccessFile(filePath, "r")) {
+        try (BufferedReader raf = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = raf.readLine()) != null) {
                 int sep = line.indexOf(',');
